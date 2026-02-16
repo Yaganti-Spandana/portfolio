@@ -7,31 +7,37 @@ function ContactForm() {
   // Optional honeypot field for bots
   const [hiddenField, setHiddenField] = React.useState("");
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const sendEmail = async (e) => {
+  e.preventDefault();
 
-    // If honeypot is filled, block submission
-    if (hiddenField) {
-      console.log("Bot detected! Submission blocked.");
-      return;
-    }
-
-    emailjs.sendForm(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      form.current,
-      process.env.REACT_APP_EMAILJS_USER_ID
-    )
-    .then((result) => {
-      console.log("Email sent:", result.text);
-      alert("Message sent successfully!");
-      e.target.reset(); // reset form
-    })
-    .catch((error) => {
-      console.log("Error:", error.text);
-      alert("Failed to send message. Try again later.");
-    });
+  const formData = {
+    name: e.target.user_name.value,
+    email: e.target.user_email.value,
+    message: e.target.message.value,
   };
+
+  // Optional honeypot
+  if (e.target.website.value) return; // bot detected
+
+  try {
+    const res = await fetch('/.netlify/functions/sendEmail', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    });
+
+    const data = await res.json();
+    if (data.ok) {
+      alert('Message sent successfully!');
+      e.target.reset();
+    } else {
+      alert('Failed to send message.');
+    }
+  } catch (err) {
+    alert('Error sending message.');
+    console.error(err);
+  }
+};
+
 
   return (
     <form ref={form} onSubmit={sendEmail} className="contact-form">
