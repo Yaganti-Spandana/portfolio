@@ -11,7 +11,7 @@ function Projects() {
         "My first portfolio created as a beginner freelancer to showcase basic websites and skills in HTML, CSS, and JavaScript.",
       image: profileImg3,
       live_url: "https://yaganti-spandana.netlify.app/",
-      github_url: "https://github.com/yaganti-spandana/old-portfolio.git",
+      github_url: "https://github.com/yaganti-spandana/portfolio.git",
       note: "⚠️ functionality is limited, but shows my starting journey as a freelancer."
     },
     
