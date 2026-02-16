@@ -1,31 +1,21 @@
-// netlify/functions/sendEmail.js
-
-import nodemailer from "nodemailer"; // or any mail service
+import nodemailer from "nodemailer";
 
 export async function handler(event, context) {
   try {
     if (!event.body) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "No request body sent" }),
-      };
+      return { statusCode: 400, body: JSON.stringify({ error: "No request body" }) };
     }
 
-    // Parse JSON safely
     const { name, email, message } = JSON.parse(event.body);
 
     if (!name || !email || !message) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Missing fields" }),
-      };
+      return { statusCode: 400, body: JSON.stringify({ error: "Missing fields" }) };
     }
 
-    // Your email sending logic here
-    // Example with nodemailer
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
+      port: Number(process.env.SMTP_PORT),
+      secure: process.env.SMTP_SECURE === "true", // true for 465, false for 587
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -33,21 +23,15 @@ export async function handler(event, context) {
     });
 
     await transporter.sendMail({
-      from: email,
-      to: process.env.MY_EMAIL, // your email
+      from: `"${name}" <${process.env.SMTP_USER}>`,
+      to: process.env.RECEIVER_EMAIL,
       subject: `Message from ${name}`,
-      text: message,
+      text: `Sender: ${email}\n\n${message}`,
     });
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ ok: true }),
-    };
+    return { statusCode: 200, body: JSON.stringify({ ok: true }) };
   } catch (err) {
     console.error("Function error:", err);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message }),
-    };
+    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 }
