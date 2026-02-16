@@ -5,10 +5,10 @@ function ContactForm() {
     e.preventDefault();
 
     emailjs.sendForm(
-      "service_u87u4ce",
-      "template_y92nwug",
+      "",
+      "",
       e.target,
-      "EyLLMHoYaxlr5FbGz"
+      ""
     )
     .then(() => alert("Message sent!"))
     .catch((err) => {
