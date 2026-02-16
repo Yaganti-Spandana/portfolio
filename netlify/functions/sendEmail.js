@@ -1,32 +1,59 @@
-const fetch = require('node-fetch');
+// netlify/functions/sendEmail.js
+const fetch = require("node-fetch"); // or use global fetch in Node 18+
 
 exports.handler = async (event) => {
   try {
-    const { name, email, message } = JSON.parse(event.body);
+    // Netlify sometimes sends body as undefined or empty string
+    if (!event.body || event.body === "") {
+      return { statusCode: 400, body: JSON.stringify({ error: "No request body sent" }) };
+    }
 
-    const service_id = process.env.EMAILJS_SERVICE_ID;
-    const template_id = process.env.EMAILJS_TEMPLATE_ID;
-    const user_id = process.env.EMAILJS_USER_ID;
+    // Parse safely
+    let parsed;
+    try {
+      parsed = JSON.parse(event.body);
+    } catch (err) {
+      return { statusCode: 400, body: JSON.stringify({ error: "Invalid JSON" }) };
+    }
 
+    const { name, email, message } = parsed;
+
+    if (!name || !email || !message) {
+      return { statusCode: 400, body: JSON.stringify({ error: "Missing fields" }) };
+    }
+
+    // EmailJS payload
     const payload = {
-      service_id,
-      template_id,
-      user_id,
+      service_id: process.env.EMAILJS_SERVICE_ID,
+      template_id: process.env.EMAILJS_TEMPLATE_ID,
+      user_id: process.env.EMAILJS_USER_ID,
       template_params: { name, email, message },
     };
 
-    const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    // ✅ Await **inside** async function
+    const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
 
+    // Handle response safely
+    let data;
+    try {
+      data = await res.json();
+    } catch {
+      const text = await res.text();
+      data = { error: text || "Invalid response" };
+    }
+
     if (!res.ok) {
-      return { statusCode: 500, body: JSON.stringify({ error: 'Email failed' }) };
+      console.error("EmailJS error:", data);
+      return { statusCode: 500, body: JSON.stringify({ error: "EmailJS API call failed" }) };
     }
 
     return { statusCode: 200, body: JSON.stringify({ ok: true }) };
-  } catch (error) {
-    return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+  } catch (err) {
+    console.error("Function error:", err);
+    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 };

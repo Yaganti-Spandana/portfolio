@@ -3,6 +3,8 @@ import React, { useRef } from "react";
 function ContactForm() {
   const form = useRef();
 
+
+  
   // Optional honeypot field for bots
   const [hiddenField, setHiddenField] = React.useState("");
 
@@ -20,9 +22,13 @@ function ContactForm() {
 
   try {
     const res = await fetch('/.netlify/functions/sendEmail', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-    });
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json', // <-- important
+  },
+  body: JSON.stringify(formData),
+});
+
 
     const data = await res.json();
     if (data.ok) {
