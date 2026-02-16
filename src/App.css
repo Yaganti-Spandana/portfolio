@@ -335,7 +335,7 @@ section h2 {
 }
 
 /* Contact Form */
-.contact form {
+.contact-form {
   max-width: 600px;
   margin: auto;
   display: flex;
@@ -343,20 +343,20 @@ section h2 {
   gap: 1rem;
 }
 
-.contact input, .contact textarea {
+.contact-form input, .contact-form textarea {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
 }
 
-.contact input:focus, .contact textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus {
   outline: none;
   border-color: #1E3A8A;
   box-shadow: 0 0 5px rgba(30,58,138,0.5);
 }
 
-.contact button {
+.contact-form button {
   padding: 0.75rem;
   background: #1E3A8A;
   color: #fff;
@@ -367,7 +367,7 @@ section h2 {
   transition: 0.3s;
 }
 
-.contact button:hover {
+.contact-form button:hover {
   background: #0f1f60;
 }
 
