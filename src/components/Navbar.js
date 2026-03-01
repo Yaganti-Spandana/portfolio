@@ -12,14 +12,13 @@ function Navbar() {
         <div className="logo">Spandana Yaganti</div>
 
         {/* Desktop Menu */}
-        <ul className="nav-links">
+        <ul className="nav-links desktop-menu">
           {links.map((link) => (
             <li key={link}>
               <Link
                 to={link.toLowerCase()}
                 smooth={true}
                 duration={500}
-                onClick={() => setOpen(false)}
               >
                 {link}
               </Link>
@@ -46,7 +45,7 @@ function Navbar() {
               to={link.toLowerCase()}
               smooth={true}
               duration={500}
-              onClick={() => setOpen(false)}
+              onClick={() => setOpen(false)} // close menu after clicking
             >
               {link}
             </Link>
