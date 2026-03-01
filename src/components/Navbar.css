@@ -41,6 +41,7 @@
 .nav-links.desktop-menu {
   display: flex;
   gap: 28px;
+  cursor: pointer;
 }
 
 .nav-links li {
