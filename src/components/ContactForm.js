@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Element } from "react-scroll";
-import "./ContactForm.css"; // optional if you have styles
 
 function ContactForm() {
   const form = useRef();
