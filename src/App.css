@@ -775,15 +775,22 @@ footer a:hover {
   height: 100%;
   width: var(--skill-width);
   border-radius: 999px;
-
-  /* ⭐ SAME GRADIENT AS LOGO */
   background: linear-gradient(90deg, #facc15, #f97316);
-
-  /* smooth animation */
   animation: skillGrow 1.4s ease forwards;
-
-  /* glow effect */
   box-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
+}
+
+.skill-name span:first-child {
+  background: linear-gradient(90deg, #facc15, #f97316);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.skill-name span:last-child {
+  color: #facc15;
+  font-weight: 600;
 }
 
 /* animation */
