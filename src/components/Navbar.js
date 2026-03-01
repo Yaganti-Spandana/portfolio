@@ -15,11 +15,7 @@ function Navbar() {
         <ul className="nav-links desktop-menu">
           {links.map((link) => (
             <li key={link}>
-              <Link
-                to={link.toLowerCase()}
-                smooth={true}
-                duration={500}
-              >
+              <Link to={link.toLowerCase()} smooth={true} duration={500}>
                 {link}
               </Link>
             </li>
@@ -45,7 +41,7 @@ function Navbar() {
               to={link.toLowerCase()}
               smooth={true}
               duration={500}
-              onClick={() => setOpen(false)} // close menu after clicking
+              onClick={() => setOpen(false)}
             >
               {link}
             </Link>
