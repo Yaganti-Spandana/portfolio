@@ -20,6 +20,7 @@ function Hero() {
         <br />
         Building modern websites with React & Django
       </motion.p>
+      <div> <a href="#contact" className="primary">Hire Me</a> <a href="#projects" className="secondary">View Projects</a> </div>
     </section>
   );
 }
