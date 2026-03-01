@@ -24,9 +24,17 @@
 /* logo */
 .logo {
   font-size: 1.6rem;
-  font-weight: 700;
-  color: #facc15;
-  letter-spacing: 0.5px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #facc15, #f97316);
+
+  /* ✅ standard property */
+  background-clip: text;
+
+  /* ✅ webkit support */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  color: transparent; /* fallback */
 }
 
 /* desktop menu */
