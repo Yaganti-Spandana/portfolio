@@ -689,6 +689,9 @@ footer {
   text-align: center;
   border-top: 1px solid #1f2937;
 }
+footer p{
+  color: #facc15;
+}
 
 footer a {
   color: #facc15;
