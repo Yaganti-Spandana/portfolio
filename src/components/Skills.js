@@ -9,7 +9,7 @@ function Skills() {
 
   return (
     <section className="skills container" id="skills">
-      <h2>Skills</h2>
+      <h2 className="gradient-text">Skills</h2>
       {skills.map(skill => (
         <div className="skill" key={skill.name}>
           <div className="skill-name">

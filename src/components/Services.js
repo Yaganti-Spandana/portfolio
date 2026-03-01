@@ -3,7 +3,7 @@ function Services() {
 
   return (
     <section className="services container" id="services">
-      <h2>Services</h2>
+      <h2 className="gradient-text">Services</h2>
       <div style={{display:'flex',flexWrap:'wrap',gap:'2rem',justifyContent:'center'}}>
         {services.map(s => (
           <div className="service-card" key={s}>

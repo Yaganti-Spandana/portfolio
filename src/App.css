@@ -730,3 +730,12 @@ footer a:hover {
 .project-card:hover::before {
   opacity: 1;
 }
+
+/* ===== Gradient Text (Reusable) ===== */
+.gradient-text {
+  background: linear-gradient(90deg, #facc15, #f97316);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

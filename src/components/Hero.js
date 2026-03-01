@@ -8,7 +8,7 @@ function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        Hi, I'm Spandana Yaganti
+        <h1 className="gradient-text">Hi, I'm Spandana Yaganti</h1>
       </motion.h1>
 
       <motion.p

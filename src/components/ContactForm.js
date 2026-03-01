@@ -44,7 +44,7 @@ function ContactForm() {
     // ⭐⭐⭐ THIS FIXES YOUR SCROLL ISSUE ⭐⭐⭐
     <Element name="contact" className="contact-section">
       <form ref={form} onSubmit={sendEmail} className="contact-form">
-        <h2>Contact Me</h2>
+        <h2 className="gradient-text">Contact Me</h2>
 
         <input
           type="text"

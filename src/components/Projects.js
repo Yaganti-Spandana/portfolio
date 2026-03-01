@@ -40,7 +40,7 @@ function Projects() {
 
   return (
     <section className="projects container" id="projects">
-      <h2>Projects</h2>
+      <h2 className="gradient-text">Projects</h2>
       <div className="projects-grid">
         {projects.map(p => (
           <div className="project-card" key={p.id}>
