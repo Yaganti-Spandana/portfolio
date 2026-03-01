@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-scroll';
+import './Navbar.css';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -7,7 +8,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="nav-container container">
+      <div className="nav-container">
         <div className="logo">Spandana Yaganti</div>
 
         {/* Desktop Menu */}
@@ -18,7 +19,7 @@ function Navbar() {
                 to={link.toLowerCase()}
                 smooth={true}
                 duration={500}
-                onClick={() => setOpen(false)} // close mobile menu if clicked
+                onClick={() => setOpen(false)}
               >
                 {link}
               </Link>
@@ -45,80 +46,13 @@ function Navbar() {
               to={link.toLowerCase()}
               smooth={true}
               duration={500}
-              onClick={() => setOpen(false)} // close menu after clicking
+              onClick={() => setOpen(false)}
             >
               {link}
             </Link>
           </li>
         ))}
       </ul>
-
-      <style jsx>{`
-        nav {
-          position: fixed;
-          width: 100%;
-          background: #fff;
-          z-index: 10;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1rem 2rem;
-        }
-
-        .nav-links {
-          display: flex;
-          gap: 2rem;
-        }
-
-        .nav-links li {
-          list-style: none;
-        }
-
-        .hamburger {
-          display: none;
-          flex-direction: column;
-          cursor: pointer;
-          gap: 5px;
-        }
-
-        .hamburger span {
-          width: 25px;
-          height: 3px;
-          background: #333;
-          transition: all 0.3s;
-        }
-
-        .mobile-menu {
-          display: none;
-          flex-direction: column;
-          text-align: center;
-          background: #fff;
-        }
-
-        .mobile-menu.show {
-          display: flex;
-        }
-
-        .mobile-menu li {
-          padding: 1rem 0;
-          list-style: none;
-        }
-
-        /* Media Queries for Mobile */
-        @media screen and (max-width: 768px) {
-          .nav-links {
-            display: none;
-          }
-
-          .hamburger {
-            display: flex;
-          }
-        }
-      `}</style>
     </nav>
   );
 }
