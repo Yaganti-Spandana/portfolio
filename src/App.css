@@ -109,25 +109,6 @@ nav ul li a:hover {
   font-weight: bold;
 }
 
-.hero a.primary {
-  background: #1E3A8A;
-  color: #fff;
-}
-
-.hero a.primary:hover {
-  background: #0f1f60;
-}
-
-.hero a.secondary {
-  background: #fff;
-  border: 2px solid #1E3A8A;
-  color: #1E3A8A;
-}
-
-.hero a.secondary:hover {
-  background: #1E3A8A;
-  color: #fff;
-}
 
 /* Sections */
 section {
