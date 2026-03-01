@@ -185,101 +185,6 @@ section h2 {
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
-/* Projects */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 🔥 3 per row */
-  gap: 2rem;
-  width: 100%;
-}
-
-
-@media (max-width: 900px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.projects .project-card {
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.projects .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.projects .project-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.project-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.project-links a {
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-/* Live button */
-.btn-live {
-  background: #4caf50;
-  color: white;
-  margin-left: 5px;
-  border-radius: 5px;
-}
-
-.btn-live:hover {
-  background: #43a047;
-  transform: translateY(-2px);
-}
-
-/* GitHub button */
-.btn-github {
-  background: #24292e;
-  color: white;
-  margin-left: 15px;
-  border-radius: 5px;
-}
-
-.btn-github:hover {
-  background: #000;
-  transform: translateY(-2px);
-}
-
-.btn-backend {
-  background-color: #ff6b6b; /* noticeable but not aggressive */
-  color: white;
-  padding: 0.3rem 0.6rem;
-  margin-right: 0.5rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  text-decoration: none;
-}
-
-.project-note {
-  font-size: 0.85rem;
-  color: #ff6b6b; 
-  margin-top: 0.5rem;
-}
-
 
 /* Testimonials */
 
@@ -561,21 +466,33 @@ h2 {
 /* =========================================================
    PROJECTS
 ========================================================= */
+/* ===== Projects Grid ===== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  width: 100%;
 }
 
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Project Card ===== */
 .project-card {
   background: #111827;
   padding: 20px;
   border-radius: 16px;
   transition: 0.3s;
   border: 1px solid #1f2937;
-}
-.project-card h3,p{
-  color: black;
 }
 
 .project-card:hover {
@@ -585,11 +502,19 @@ h2 {
 
 .project-card img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 10px;
   margin-bottom: 12px;
 }
 
-/* Project buttons */
+/* ✅ FIXED selector */
+.project-card h3,
+.project-card p {
+  color: black;
+}
+
+/* ===== Project Links ===== */
 .project-links {
   display: flex;
   flex-wrap: wrap;
@@ -598,18 +523,29 @@ h2 {
 }
 
 .project-links a {
-  flex: 1;
-  text-align: center;
-  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
   border-radius: 6px;
   text-decoration: none;
   font-size: 0.9rem;
   transition: 0.25s;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
+/* ===== Buttons ===== */
 .btn-live {
   background: #22c55e;
   color: white;
+}
+
+.btn-live:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
 }
 
 .btn-github {
@@ -617,11 +553,27 @@ h2 {
   color: white;
 }
 
+.btn-github:hover {
+  background: #111827;
+  transform: translateY(-2px);
+}
+
 .btn-backend {
   background: #facc15;
   color: #111827;
 }
 
+.btn-backend:hover {
+  background: #eab308;
+  transform: translateY(-2px);
+}
+
+/* ===== Note ===== */
+.project-note {
+  font-size: 0.85rem;
+  color: #ff6b6b;
+  margin-top: 0.5rem;
+}
 /* =========================================================
    CONTACT
 ========================================================= */
