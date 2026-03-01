@@ -6,6 +6,8 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const links = ['Home', 'About', 'Skills', 'Services', 'Projects', 'Contact'];
 
+  const handleClose = () => setOpen(false);
+
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -15,14 +17,21 @@ function Navbar() {
         <ul className="nav-links desktop-menu">
           {links.map((link) => (
             <li key={link}>
-              <Link to={link.toLowerCase()} smooth={true} duration={500}>
+              <Link
+                to={link.toLowerCase()}
+                smooth={true}
+                duration={500}
+                offset={-80}          // ⭐ FIX for fixed navbar
+                spy={true}
+                activeClass="active"
+              >
                 {link}
               </Link>
             </li>
           ))}
         </ul>
 
-        {/* Hamburger Icon */}
+        {/* Hamburger */}
         <div
           className={`hamburger ${open ? 'active' : ''}`}
           onClick={() => setOpen(!open)}
@@ -41,7 +50,8 @@ function Navbar() {
               to={link.toLowerCase()}
               smooth={true}
               duration={500}
-              onClick={() => setOpen(false)}
+              offset={-80}        // ⭐ IMPORTANT
+              onClick={handleClose}
             >
               {link}
             </Link>
