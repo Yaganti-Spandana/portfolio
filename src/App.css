@@ -593,6 +593,9 @@ h2 {
   transition: 0.3s;
   border: 1px solid #1f2937;
 }
+.project-card h3,p{
+  color: black;
+}
 
 .project-card:hover {
   transform: translateY(-6px);
