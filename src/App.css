@@ -488,7 +488,7 @@ h2 {
 
 /* ===== Project Card ===== */
 .project-card {
-  background: #111827;
+  background: whitesmoke;
   padding: 20px;
   border-radius: 16px;
   transition: 0.3s;
